@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   App.js                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaparici <aaparici@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/24 23:48:28 by aaparici          #+#    #+#             */
+/*   Updated: 2023/02/25 00:35:59 by aaparici         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+import { Header } from "./components/Header";
 
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header></Header>
     </div>
   );
 }
