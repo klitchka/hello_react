@@ -6,7 +6,7 @@
 /*   By: aaparici <aaparici@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 23:48:28 by aaparici          #+#    #+#             */
-/*   Updated: 2023/02/25 00:35:59 by aaparici         ###   ########.fr       */
+/*   Updated: 2023/02/25 01:24:37 by aaparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ function App() {
   
   return (
     <div className="container">
-      <Header></Header>
+      <Header title=""></Header>
     </div>
   );
 }
