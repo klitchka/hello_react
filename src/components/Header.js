@@ -6,7 +6,7 @@
 /*   By: aaparici <aaparici@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 14:16:51 by aaparici          #+#    #+#             */
-/*   Updated: 2023/02/26 17:31:39 by aaparici         ###   ########.fr       */
+/*   Updated: 2023/02/26 17:38:39 by aaparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ export const Header = ({ title }) => {
         <br></br>
         <br></br>
         <p>{title}</p>
-       
-     
     </header>
   )
   
