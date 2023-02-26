@@ -6,7 +6,7 @@
 /*   By: aaparici <aaparici@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 14:16:51 by aaparici          #+#    #+#             */
-/*   Updated: 2023/02/26 17:01:00 by aaparici         ###   ########.fr       */
+/*   Updated: 2023/02/26 17:01:41 by aaparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Header.defaultProps = {
 }
 
 const headerstyle = {
-  color: 'white', 
-  backgroundColor: 'black'
+  color: 'black', 
+  backgroundColor: 'white'
 }
 
