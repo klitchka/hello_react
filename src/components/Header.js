@@ -6,7 +6,7 @@
 /*   By: aaparici <aaparici@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 14:16:51 by aaparici          #+#    #+#             */
-/*   Updated: 2023/02/26 14:16:53 by aaparici         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:54:39 by aaparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ export const Header = ({ title }) => {
   return (
     <header>
         <h1>{title}</h1>
-        <h1>Hello {name}</h1>
+        <h1 style={{color: 'blue'}}>Hello {name}</h1>
         <h2>Are you happy? {x ? 'Sí' : 'No'}</h2>
     </header>
   )
