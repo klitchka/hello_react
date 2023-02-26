@@ -6,7 +6,7 @@
 /*   By: aaparici <aaparici@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 14:16:51 by aaparici          #+#    #+#             */
-/*   Updated: 2023/02/26 17:15:58 by aaparici         ###   ########.fr       */
+/*   Updated: 2023/02/26 17:21:12 by aaparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,14 @@ export const Header = ({ title }) => {
     <header>
         <h1 style={headerstyle}>Hello {name}</h1>
         <h2 style={headerstyle}>Are you happy? {x ? 'Sí' : 'No'}</h2>
-        <p style={headerstyle}>{title}</p>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <p>{title}</p>
+       
+     
     </header>
   )
   
