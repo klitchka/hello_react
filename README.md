@@ -4,6 +4,11 @@ In this app you can check my vitals.
 
 In the project directory, you can run:
 
+### `npm install`
+
+To install the deppendencies.
+
+
 ### `npm start`
 
 Runs the app in the development mode.\
