@@ -6,7 +6,7 @@
 /*   By: aaparici <aaparici@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 14:16:51 by aaparici          #+#    #+#             */
-/*   Updated: 2023/02/26 18:14:29 by aaparici         ###   ########.fr       */
+/*   Updated: 2023/02/27 20:54:33 by aaparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ export const Header = ({ title }) => {
         <br></br>
         <br></br>
         <p>{title}</p>
+        <button>Give love</button>
     </header>
   )
   
