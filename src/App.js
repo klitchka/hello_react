@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {MainSquare } from "./components/Main";
 //import React from "react";
 import 'firebase/auth';
