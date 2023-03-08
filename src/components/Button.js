@@ -4,9 +4,10 @@ export const Button = ({text}) => {
 
     const onClick = () => {
         console.log('click')
+      
     }
   return (
-    <button className='btn'>{text}</button>
+    <button onClick={onClick}className='btn'>{text}</button>
   )
 }
 
