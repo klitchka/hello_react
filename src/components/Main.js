@@ -1,4 +1,4 @@
-import { Button } from './Button';
+import LikeButton from './Button'
 
 const name = 'Klitchka';
 const happy = true;
@@ -18,8 +18,7 @@ export const MainSquare = ({ title }) => {
       <br></br><br></br><br></br>
         <p>{title}</p>
         <br></br>
-        <Button text='Give Love'></Button>
-        
+        <LikeButton text='Give Love'></LikeButton>        
     </header>
   )
   

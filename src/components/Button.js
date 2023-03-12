@@ -1,17 +1,23 @@
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export const Button = ({text}) => {
+function LikeButton({ text }) {
+  const [likeCount, setLikeCount] = React.useState(0);
 
-    const onClick = () => {
-        console.log('click')
-      
-    }
+  function handleButtonClick() {
+    setLikeCount(likeCount + 1);
+    console.log('click');
+  }
+
   return (
-    <button onClick={onClick}className='btn'>{text}</button>
-  )
+    <button id="like-button" onClick={handleButtonClick}>
+      {text} ({likeCount})
+    </button>
+  );
 }
 
-Button.propTypes =
-{
-    text: PropTypes.string,
-}
+LikeButton.propTypes = {
+  text: PropTypes.string,
+};
+
+export default LikeButton;
