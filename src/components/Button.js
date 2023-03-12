@@ -14,7 +14,7 @@ function LikeButton() {
 
   return (
     <button id="like-button" onClick={handleButtonClick}>
-      Like ({likeCount})
+      Give love ({likeCount})
     </button>
   );
 }
