@@ -1,23 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-function LikeButton({ text }) {
-  const [likeCount, setLikeCount] = React.useState(0);
+function LikeButton() {
+  const [likeCount, setLikeCount] = React.useState(
+    parseInt(localStorage.getItem('likeCount') || 0)
+  );
 
   function handleButtonClick() {
-    setLikeCount(likeCount + 1);
+    const newLikeCount = likeCount + 1;
+    setLikeCount(newLikeCount);
+    localStorage.setItem('likeCount', newLikeCount);
     console.log('click');
   }
 
   return (
     <button id="like-button" onClick={handleButtonClick}>
-      {text} ({likeCount})
+      Like ({likeCount})
     </button>
   );
 }
 
-LikeButton.propTypes = {
-  text: PropTypes.string,
-};
-
 export default LikeButton;
+
