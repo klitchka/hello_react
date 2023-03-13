@@ -9,13 +9,15 @@ function LikeButton() {
     const newLikeCount = likeCount + 1;
     setLikeCount(newLikeCount);
     localStorage.setItem('likeCount', newLikeCount);
-    console.log('click');
+    console.log('♥');
   }
 
   return (
-    <button id="like-button" onClick={handleButtonClick}>
-      Give love ({likeCount})
-    </button>
+    <div>
+      <button id="like-button" onClick={handleButtonClick}>
+        Give love ({likeCount})
+      </button>
+    </div>
   );
 }
 
