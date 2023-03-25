@@ -1,19 +1,32 @@
+import { useState } from 'react';
 import LikeButton from './Button'
+import Status from './StatusButton.js';
 
 const name = 'Klitchka';
-const happy = true;
-const love = true;
-const healthy = false;
-
 
 export const MainSquare = ({ title }) => {
+  const [happy, setHappy] = useState(true);
+  const [love, setLove] = useState(true);
+  const [healthy, setHealthy] = useState(false);
+
   return (
     <header>
       <p>
         <h1 style={mainstyle}>Hello {name}</h1>
-        <h2 style={mainstyle}>Are you happy? {happy ? 'Yes' : 'No'}</h2>
-        <h2 style={mainstyle}>Are you in love? {love ? 'Yes' : 'No'}</h2>
-        <h2 style={mainstyle}>Are you healthy? {healthy ? 'Yes' : 'No'}</h2>
+        <h1 style={questions}>Are you happy?
+        <Status>
+        {happy ? 'Yes' : 'No'}</Status></h1>
+
+
+        <h1 style={questions}>Are you in love? 
+        <Status>
+        {love ? 'Yes' : 'No'}</Status></h1>
+
+
+        <h1 style={questions}>Are you healthy? 
+        <Status>
+        {healthy ? 'Yes' : 'No'}</Status></h1>
+
       </p>
       <br></br><br></br><br></br>
         <p>{title}</p>
@@ -33,3 +46,8 @@ const mainstyle = {
   backgroundColor: 'white'
 }
 
+const questions = {
+  color: 'black',
+  backgroundColor: 'white',
+  fontSize: '16px'
+}
