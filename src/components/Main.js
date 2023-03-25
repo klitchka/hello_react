@@ -17,7 +17,7 @@ export const MainSquare = ({ title }) => {
         <StatusButton name="love" />
         </h1>
 
-        <h1 style={questions}>Are you healthy?&nbsp;&nbsp;
+        <h1 style={questions}>Are you healthy? &nbsp;&nbsp;
         <StatusButton name="healthy" />
         </h1>
 
