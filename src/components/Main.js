@@ -9,15 +9,15 @@ export const MainSquare = ({ title }) => {
     <header>
       <p>
         <h1 style={mainstyle}>Hello {name}</h1>
-        <h1 style={questions}>Are you happy?
+        <h1 style={questions}>Are you happy?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <StatusButton name="happy" />
         </h1>
 
-        <h1 style={questions}>Are you in love? 
+        <h1 style={questions}>Are you in love? &nbsp;&nbsp;&nbsp;
         <StatusButton name="love" />
         </h1>
 
-        <h1 style={questions}>Are you healthy? 
+        <h1 style={questions}>Are you healthy?&nbsp;&nbsp;
         <StatusButton name="healthy" />
         </h1>
 
