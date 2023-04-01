@@ -5,6 +5,7 @@ import StatusButton from './StatusButton.js';
 const name = 'Klitchka';
 const allowedIP = '127.0.0.1'; // Dirección IP permitida para realizar cambios
 
+
 export const MainSquare = ({ title }) => {
   
   // Recupera los valores almacenados en LocalStorage o inicializa el estado si no hay nada almacenado
@@ -28,11 +29,19 @@ export const MainSquare = ({ title }) => {
   };
   
   // Guarda los valores de love, happy y healthy en LocalStorage cada vez que cambian
-  useEffect(() => {
-    localStorage.setItem('love', status.love.toString());
-    localStorage.setItem('happy', status.happy.toString());
-    localStorage.setItem('healthy', status.healthy.toString());
-  }, [status]);
+useEffect(() => {
+  localStorage.setItem('love', status.love.toString());
+  localStorage.setItem('happy', status.happy.toString());
+  localStorage.setItem('healthy', status.healthy.toString());
+}, [status]);
+
+// Agrega este código para que los valores se carguen desde el almacenamiento local cuando se inicie la página
+useEffect(() => {
+  const love = localStorage.getItem('love') === 'true';
+  const happy = localStorage.getItem('happy') === 'true';
+  const healthy = localStorage.getItem('healthy') === 'true';
+  setStatus({ love, happy, healthy });
+}, []);
 
   return (
     <header>
