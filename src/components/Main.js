@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LikeButton from './Button';
 import StatusButton from './StatusButton.js';
 
@@ -6,11 +6,13 @@ const name = 'Klitchka';
 const allowedIP = '127.0.0.1'; // Dirección IP permitida para realizar cambios
 
 export const MainSquare = ({ title }) => {
-
-  const [status, setStatus] = useState({
-    happy: false,
-    love: false,
-    healthy: false
+  
+  // Recupera los valores almacenados en LocalStorage o inicializa el estado si no hay nada almacenado
+  const [status, setStatus] = useState(() => {
+    const love = localStorage.getItem('love') === 'true';
+    const happy = localStorage.getItem('happy') === 'true';
+    const healthy = localStorage.getItem('healthy') === 'true';
+    return { love, happy, healthy };
   });
 
   const handleStatusChange = (statusName) => {
@@ -24,6 +26,13 @@ export const MainSquare = ({ title }) => {
       console.log('No se permite realizar cambios desde esta dirección IP');
     }
   };
+  
+  // Guarda los valores de love, happy y healthy en LocalStorage cada vez que cambian
+  useEffect(() => {
+    localStorage.setItem('love', status.love.toString());
+    localStorage.setItem('happy', status.happy.toString());
+    localStorage.setItem('healthy', status.healthy.toString());
+  }, [status]);
 
   return (
     <header>
