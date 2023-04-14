@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 
+const happy = false;
+const love = true;
+const healthy = true;
+
+
 function StatusButton(props) {
   const [isLiked, setIsLiked] = useState(
-    localStorage.getItem(props.name) === 'true' ? true : false
+    localStorage.getItem(props.name) === happy ? false : true
+    
   );
 
   function handleButtonClick() {

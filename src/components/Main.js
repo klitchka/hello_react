@@ -4,6 +4,7 @@ import StatusButton from './StatusButton.js';
 
 const name = 'Klitchka';
 
+
 export const MainSquare = ({ title }) => {
   
 
