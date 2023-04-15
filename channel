@@ -1,0 +1,21 @@
+import { initializeApp } from 'firebase/app';
+import { getFirestore, setDoc, doc } from 'firebase/firestore';
+
+const firebaseConfig = {
+  // Configuración de Firebase
+};
+
+// Inicializar Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Guardar las variables en Firestore
+setDoc(doc(db, 'status', 'general'), {
+  happy: false,
+  love: true,
+  healthy: true,
+}).then(() => {
+  console.log('Datos guardados en Firestore');
+}).catch((error) => {
+  console.error('Error al guardar datos en Firestore: ', error);
+});

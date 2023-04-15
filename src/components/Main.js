@@ -1,6 +1,6 @@
 
 import LikeButton from './Button';
-import StatusButton from './StatusButton.js';
+import StatusButton from './StatusButton';
 
 const name = 'Klitchka';
 
@@ -13,15 +13,15 @@ export const MainSquare = ({ title }) => {
       <p>
         <h1 style={mainstyle}>Hello {name}</h1>
         <h1 style={questions}>Are you happy?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <StatusButton name="happy"/>
+        <StatusButton id="happy"/>
         </h1>
 
         <h1 style={questions}>Are you in love? &nbsp;&nbsp;&nbsp;
-        <StatusButton name="love" />
+        <StatusButton id="love" />
         </h1>
 
         <h1 style={questions}>Are you healthy? &nbsp;&nbsp;
-        <StatusButton name="healthy"/>
+        <StatusButton id="healthy"/>
         </h1>
 
       </p>

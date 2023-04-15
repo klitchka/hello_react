@@ -25,7 +25,7 @@ function LikeButton() {
 
   useEffect(() => {
     // Leer el recuento de me gusta de Firestore y actualizar el estado
-    const docRef = doc(db, 'status', 'rSKQNfaGMjl9CnJ47cQ6');
+    const docRef = doc(db, 'status', 'HFFGO7hXrPAo7jMjgGHP');
     getDoc(docRef).then((doc) => {
       if (doc.exists()) {
         setLikeCount(doc.data().likecount);
@@ -39,7 +39,7 @@ function LikeButton() {
     const newLikeCount = likeCount + 1;
     setLikeCount(newLikeCount);
     // Actualizar el número de me gusta en Firestore
-    const docRef = doc(db, 'status', 'rSKQNfaGMjl9CnJ47cQ6');
+    const docRef = doc(db, 'status', 'HFFGO7hXrPAo7jMjgGHP');
     updateDoc(docRef, { likecount: newLikeCount });
   }
 

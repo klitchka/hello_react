@@ -1,27 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, doc, setDoc, onSnapshot } from 'firebase/firestore';
 
-const happy = false;
-const love = true;
-const healthy = true;
+const firebaseConfig = {
+  apiKey: "AIzaSyB-SRCyw_fzQm6QzOCcka-pyP9qCwKDJl0",
+  authDomain: "hello-klitchka.firebaseapp.com",
+  projectId: "hello-klitchka",
+  storageBucket: "hello-klitchka.appspot.com",
+  messagingSenderId: "37045171502",
+  appId: "1:37045171502:web:e9cfea68e63a257258b6bf",
+  measurementId: "G-KBSY38VQJ5"
+};
 
 
-function StatusButton(props) {
-  const [isLiked, setIsLiked] = useState(
-    localStorage.getItem(props.name) === happy ? false : true
-    
-  );
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const statusDocRef = doc(db, 'status/rSKQNfaGMjl9CnJ47cQ6');
 
-  function handleButtonClick() {
-    const newIsLiked = !isLiked;
-    setIsLiked(newIsLiked);
-    localStorage.setItem(props.name, newIsLiked);
-    console.log(newIsLiked ? 'yes' : 'no');
+function StatusButton() {
+  const [happy, setHappy] = useState(false);
+  const [healthy, setHealthy] = useState(false);
+  const [love, setLove] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(statusDocRef, (doc) => {
+      if (doc.exists()) {
+        const data = doc.data();
+        setHappy(data.happy);
+        setHealthy(data.healthy);
+        setLove(data.love);
+      }
+    });
+
+    return unsubscribe;
+  });
+
+  function handleButtonClick(name, value) {
+    setDoc(statusDocRef, { [name]: !value }, { merge: true });
   }
 
   return (
-    <button id="Status" onClick={handleButtonClick}>
-      {isLiked ? 'yes' : 'no'}
-    </button>
+    <div>
+      <button id="happy" onClick={() => handleButtonClick('happy', happy)}>
+        {happy ? 'yes' : 'no'}
+      <button> {healthy ? 'yes' : 'no'} </button> 
+      </button>
+    </div>
   );
 }
 
