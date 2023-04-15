@@ -20,8 +20,6 @@ const firebaseConfig = {
 
 function StatusButton() {
   const [happy, setHappy] = useState(false);
-  const [healthy, setHealthy] = useState(false);
-  const [love, setLove] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(statusDocRef, (doc) => {
