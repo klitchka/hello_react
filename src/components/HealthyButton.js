@@ -19,17 +19,13 @@ const firebaseConfig = {
   const statusDocRef = doc(db, 'status/rSKQNfaGMjl9CnJ47cQ6');
 
 function StatusButton() {
-  const [happy, setHappy] = useState(false);
   const [healthy, setHealthy] = useState(false);
-  const [love, setLove] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(statusDocRef, (doc) => {
       if (doc.exists()) {
         const data = doc.data();
-        setHappy(data.happy);
         setHealthy(data.healthy);
-        setLove(data.love);
       }
     });
 
