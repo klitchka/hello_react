@@ -38,7 +38,7 @@ function StatusButton() {
 
   return (
     <div>
-      <button id="love" onClick={() => handleButtonClick('love', love)}>
+      <button className="status-button" id="love" onClick={() => handleButtonClick('love', love)}>
         {love ? 'yes' : 'no'}
       </button>
     </div>

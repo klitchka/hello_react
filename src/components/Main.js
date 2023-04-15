@@ -10,14 +10,11 @@ export const MainSquare = ({ title }) => {
   return (
     <header>
       <h1>Hello, {name}</h1>
-      <h1 style={questions}>Are you happy?
-        <HappyButton />
+      <h1 style={questions}>Are you happy?<HappyButton />
       </h1>
-      <h1 style={questions}>Are you in love?
-        <LoveButton />
+      <h1 style={questions}>Are you in love?<LoveButton />
       </h1>
-      <h1 style={questions}>Are you healthy?
-        <HealthyButton />
+      <h1 style={questions}>Are you healthy?<HealthyButton />
       </h1>
       <br></br>
       <p>{title}</p>

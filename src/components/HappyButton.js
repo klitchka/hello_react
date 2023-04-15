@@ -18,31 +18,32 @@ const firebaseConfig = {
   const db = getFirestore(app);
   const statusDocRef = doc(db, 'status/rSKQNfaGMjl9CnJ47cQ6');
 
-function StatusButton() {
-  const [happy, setHappy] = useState(false);
+  function StatusButton() {
+    const [happy, setHappy] = useState(false);
+    
+    useEffect(() => {
+      const unsubscribe = onSnapshot(statusDocRef, (doc) => {
+        if (doc.exists()) {
+          const data = doc.data();
+          setHappy(data.happy);
+        }
+      });
   
-  useEffect(() => {
-    const unsubscribe = onSnapshot(statusDocRef, (doc) => {
-      if (doc.exists()) {
-        const data = doc.data();
-        setHappy(data.happy);
-      }
+      return unsubscribe;
     });
-
-    return unsubscribe;
-  });
-
-  function handleButtonClick(name, value) {
-    setDoc(statusDocRef, { [name]: !value }, { merge: true });
+  
+    function handleButtonClick(name, value) {
+      setDoc(statusDocRef, { [name]: !value }, { merge: true });
+    }
+  
+    return (
+      <div>
+        <button className="status-button" id="happy" onClick={() => handleButtonClick('happy', happy)}>
+          {happy ? 'yes' : 'no'}
+        </button>
+      </div>
+    );
   }
-
-  return (
-    <div>
-      <button id="happy" onClick={() => handleButtonClick('happy', happy)}>
-        {happy ? 'yes' : 'no'}
-      </button>
-    </div>
-  );
-}
-
-export default StatusButton;
+  
+  export default StatusButton;
+  

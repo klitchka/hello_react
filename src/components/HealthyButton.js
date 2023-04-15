@@ -38,7 +38,7 @@ function StatusButton() {
 
   return (
     <div>
-      <button id="healthy" onClick={() => handleButtonClick('healthy', healthy)}>
+      <button className="status-button" id="healthy" onClick={() => handleButtonClick('healthy', healthy)}>
         {healthy ? 'yes' : 'no'}
       </button>
     </div>
