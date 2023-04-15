@@ -39,14 +39,15 @@ function StatusButton() {
   function handleButtonClick(name, value) {
     setDoc(statusDocRef, { [name]: !value }, { merge: true });
   }
-
+  
   return (
     <div>
-      <button id="happy" onClick={() => handleButtonClick('happy', happy)}>
-        {happy ? 'yes' : 'no'}
+      <button id="love" onClick={() => handleButtonClick('love', love)}>
+        {love ? 'yes' : 'no'}
       </button>
     </div>
   );
+
 }
 
 export default StatusButton;

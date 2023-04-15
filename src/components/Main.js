@@ -1,6 +1,8 @@
 
 import LikeButton from './Button';
-import StatusButton from './StatusButton';
+import HappyButton from './HappyButton';
+import LoveButton from './LoveButton';
+import HealthyButton from './HealthyButton';
 
 const name = 'Klitchka';
 
@@ -11,18 +13,17 @@ export const MainSquare = ({ title }) => {
   return (
     <header>
       <p>
-        <h1 style={mainstyle}>Hello {name}</h1>
-        <h1 style={questions}>Are you happy?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <StatusButton id="happy"/>
-        </h1>
+      <h1 style={questions}>Are you happy?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<HappyButton />
+</h1>
 
-        <h1 style={questions}>Are you in love? &nbsp;&nbsp;&nbsp;
-        <StatusButton id="love" />
-        </h1>
+<h1 style={questions}>Are you in love? &nbsp;&nbsp;&nbsp;
+<LoveButton />
+</h1>
 
-        <h1 style={questions}>Are you healthy? &nbsp;&nbsp;
-        <StatusButton id="healthy"/>
-        </h1>
+<h1 style={questions}>Are you healthy? &nbsp;&nbsp;
+<HealthyButton />
+</h1>
 
       </p>
       <br></br><br></br><br></br>

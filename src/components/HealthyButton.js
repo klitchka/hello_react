@@ -42,11 +42,12 @@ function StatusButton() {
 
   return (
     <div>
-      <button id="happy" onClick={() => handleButtonClick('happy', happy)}>
-        {happy ? 'yes' : 'no'}
+      <button id="healthy" onClick={() => handleButtonClick('healthy', healthy)}>
+        {healthy ? 'yes' : 'no'}
       </button>
     </div>
   );
+
 }
 
 export default StatusButton;
