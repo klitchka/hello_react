@@ -17,7 +17,7 @@ body {
   margin: 300px auto;
   overflow: auto;
   min-height: 300px;
-  border: 20px solid rgb(45, 49, 52);
+  border: none;
   padding: 30px;
   border-radius: 5px;
 }
