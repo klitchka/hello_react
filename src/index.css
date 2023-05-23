@@ -14,7 +14,7 @@ body {
 .container {
   max-width: 380px;
   max-height: 380px;
-  margin: 300px auto;
+  margin: 50px auto;
   overflow: auto;
   min-height: 300px;
   border: none;
@@ -43,6 +43,12 @@ body {
   width: 100%;
 }
 
+.user-info {
+  border: 1px solid #333;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
 
 .status-button {
   display: block;

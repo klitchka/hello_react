@@ -4,7 +4,7 @@ import LoveButton from './LoveButton';
 import HealthyButton from './HealthyButton';
 import { useState, useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
+import { getFirestore, collection, query, where, getDocs, doc, setDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB-SRCyw_fzQm6QzOCcka-pyP9qCwKDJl0",
@@ -28,9 +28,11 @@ const questions = {
 }
 
 export const MainSquare = ({ title }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedDB, setSelectedDB] = useState("status"); // Estado para almacenar la base de datos seleccionada
+  const [selectedDB, setSelectedDB] = useState("status");
+  const [docId, setDocId] = useState('rSKQNfaGMjl9CnJ47cQ6');
   const [users, setUsers] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [userStatus, setUserStatus] = useState({ happy: false, inLove: false, healthy: false });
 
   async function searchInCollections(searchTerm) {
     const selectedQuery = query(collection(db, selectedDB), where('name', '==', searchTerm));
@@ -40,6 +42,11 @@ export const MainSquare = ({ title }) => {
     const selectedDocs = selectedResult.docs.map(doc => doc.data());
 
     return selectedDocs;
+  }
+
+  const updateStatus = async (field, value) => {
+    const statusDocRef = doc(db, `${selectedDB}/${docId}`);
+    await setDoc(statusDocRef, { [field]: value }, { merge: true });
   }
 
   useEffect(() => {
@@ -55,23 +62,48 @@ export const MainSquare = ({ title }) => {
       .catch((error) => {
         console.log("Error getting documents: ", error);
       });
-  }, [searchTerm, selectedDB]); // Agregar selectedDB a las dependencias del useEffect
+  }, [searchTerm, selectedDB]);
+
+  useEffect(() => {
+    if (users.length > 0) {
+      setUserStatus({
+        happy: users[0].happy,
+        inLove: users[0].inLove,
+        healthy: users[0].healthy,
+      });
+    }
+  }, [users]);
 
   return (
     <div>
-      <select onChange={(event) => setSelectedDB(event.target.value)}> // Selector desplegable para elegir la base de datos
+      <select onChange={(event) => {
+        setSelectedDB(event.target.value);
+        setSearchTerm(event.target.value);
+      }}>
+        <option value="">Select a user</option>
         <option value="status">Status</option>
         <option value="statusAndritte">StatusAndritte</option>
       </select>
       {users.map(user => (
-        <p key={user.id}>{user.name}</p>
+        <div key={user.id}>
+          <p>Name: {user.name}</p>
+          <p>Love: {user.love}</p>
+          <p>Happy: {user.happy}</p>
+          <p>Healthy: {user.healthy}</p>
+          <p>Like count: {user.likecount}</p>
+        </div>
       ))}
       <header>
         <h1>Hello, {name}</h1>
-        <h1 style={questions}>Are you happy?<HappyButton /></h1>
-        <h1 style={questions}>Are you in love?<LoveButton /></h1>
-        <h1 style={questions}>Are you healthy?<HealthyButton /></h1>
-        <br></br>
+        <h2 style={questions}>
+          Are you happy?<HappyButton isHappy={userStatus.happy} updateStatus={updateStatus} />
+        </h2>
+        <h2 style={questions}>
+          Are you in love?<LoveButton isInLove={userStatus.inLove} updateStatus={updateStatus} />
+        </h2>
+        <h2 style={questions}>
+          Are you healthy?<HealthyButton isHealthy={userStatus.healthy} updateStatus={updateStatus} />
+        </h2>
         <p>{title}</p>
         <LikeButton text='Give Love' />
       </header>
