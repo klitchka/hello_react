@@ -37,19 +37,19 @@ const MainSquare = ({ selectedDB }) => {
     <div>
       <h1>{title}</h1>
       <p>
-        Happy: 
+        Are you happy? 
         <button onClick={() => handleButtonToggle('happy')}>
           {happy ? 'Yes' : 'No'}
         </button>
       </p>
       <p>
-        Healthy: 
+        Are you healthy? 
         <button onClick={() => handleButtonToggle('healthy')}>
           {healthy ? 'Yes' : 'No'}
         </button>
       </p>
       <p>
-        Love: 
+        Are you in love?
         <button onClick={() => handleButtonToggle('love')}>
           {love ? 'Yes' : 'No'}
         </button>

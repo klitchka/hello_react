@@ -24,7 +24,7 @@ const App = () => {
   return (
     <div className="container">
       <select value={selectedDB} onChange={handleDBChange}>
-        <option value="">Select a database</option>
+        <option value="">Hi, friend</option>
         <option value="Andritte">Andritte</option>
         <option value="Klitchka">Klitchka</option>
       </select>
