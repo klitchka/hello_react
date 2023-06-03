@@ -1,24 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-function HealthyButton({ isHealthy, updateStatus }) {
-  const [healthy, setHealthy] = useState(isHealthy);
-
-  useEffect(() => {
-    setHealthy(isHealthy);
-  }, [isHealthy]);
-
-  function handleButtonClick() {
-    updateStatus('healthy', !healthy);
-    setHealthy(!healthy);
-  }
+const HealthyButton = ({ isHealthy, updateStatus }) => {
+  const handleClick = () => {
+    const newValue = !isHealthy;
+    updateStatus('healthy', newValue);
+  };
 
   return (
-    <div>
-      <button className="status-button" id="healthy" onClick={handleButtonClick}>
-        {healthy ? 'yes' : 'no'}
-      </button>
-    </div>
+    <button onClick={handleClick}>{isHealthy ? 'Yes' : 'No'}</button>
   );
-}
+};
 
 export default HealthyButton;

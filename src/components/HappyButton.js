@@ -1,24 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-function HappyButton({ isHappy, updateStatus }) {
-  const [happy, setHappy] = useState(isHappy);
-  
-  useEffect(() => {
-    setHappy(isHappy);
-  }, [isHappy]);
-
-  function handleButtonClick() {
-    updateStatus('happy', !happy);
-    setHappy(!happy);
-  }
+const HappyButton = ({ isHappy, updateStatus }) => {
+  const handleClick = () => {
+    const newValue = !isHappy;
+    updateStatus('happy', newValue);
+  };
 
   return (
-    <div>
-      <button className="status-button" id="happy" onClick={handleButtonClick}>
-        {happy ? 'yes' : 'no'}
-      </button>
-    </div>
+    <button onClick={handleClick}>{isHappy ? 'Yes' : 'No'}</button>
   );
-}
+};
 
 export default HappyButton;

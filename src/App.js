@@ -1,15 +1,36 @@
-import { MainSquare } from "./components/Main";
-import React from "react";
-<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+import React, { useState } from 'react';
+import MainSquare from './components/MainSquare';
+import { initializeApp } from 'firebase/app';
 
-function App() {
-  
+const firebaseConfig = {
+  apiKey: "AIzaSyB-SRCyw_fzQm6QzOCcka-pyP9qCwKDJl0",
+  authDomain: "hello-klitchka.firebaseapp.com",
+  projectId: "hello-klitchka",
+  storageBucket: "hello-klitchka.appspot.com",
+  messagingSenderId: "37045171502",
+  appId: "1:37045171502:web:e9cfea68e63a257258b6bf",
+  measurementId: "G-KBSY38VQJ5"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const App = () => {
+  const [selectedDB, setSelectedDB] = useState("");
+
+  const handleDBChange = (event) => {
+    setSelectedDB(event.target.value);
+  };
+
   return (
     <div className="container">
-      <MainSquare title="Thanks for passing by."></MainSquare>
+      <select value={selectedDB} onChange={handleDBChange}>
+        <option value="">Select a database</option>
+        <option value="Andritte">Andritte</option>
+        <option value="Klitchka">Klitchka</option>
+      </select>
+      {selectedDB && <MainSquare selectedDB={selectedDB} />}
     </div>
-   
   );
-}
+};
 
 export default App;

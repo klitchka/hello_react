@@ -1,24 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-function LoveButton({ isInLove, updateStatus }) {
-  const [inLove, setInLove] = useState(isInLove);
-
-  useEffect(() => {
-    setInLove(isInLove);
-  }, [isInLove]);
-
-  function handleButtonClick() {
-    updateStatus('inLove', !inLove);
-    setInLove(!inLove);
-  }
+const LoveButton = ({ isLove, updateStatus }) => {
+  const handleClick = () => {
+    const newValue = !isLove;
+    updateStatus('love', newValue);
+  };
 
   return (
-    <div>
-      <button className="status-button" id="love" onClick={handleButtonClick}>
-        {inLove ? 'yes' : 'no'}
-      </button>
-    </div>
+    <button onClick={handleClick}>{isLove ? 'Yes' : 'No'}</button>
   );
-}
+};
 
 export default LoveButton;
