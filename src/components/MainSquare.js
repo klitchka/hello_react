@@ -46,25 +46,27 @@ const MainSquare = ({ selectedDB }) => {
 
   return (
     <div>
+      <br></br>
       <h1>{title}</h1>
       <p>
-        Happy:
+       Are you happy?<p></p>
         <button onClick={() => handleButtonToggle('happy')}>
           {happy ? 'Yes' : 'No'}
         </button>
       </p>
       <p>
-        Healthy:
+       Are you healthy?<p></p>
         <button onClick={() => handleButtonToggle('healthy')}>
           {healthy ? 'Yes' : 'No'}
         </button>
       </p>
       <p>
-        Love:
+        Are you in love?<p></p>
         <button onClick={() => handleButtonToggle('love')}>
           {love ? 'Yes' : 'No'}
-        </button>
+        </button> 
       </p>
+      <br></br>
       <p><button onClick={handleLike}>Give Love</button> {likeCount}</p>
     </div>
   );
