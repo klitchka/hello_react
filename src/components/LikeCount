@@ -1,0 +1,42 @@
+import React, { useState, useEffect } from 'react';
+import { getFirestore, doc, onSnapshot, updateDoc } from 'firebase/firestore';
+
+const LikeCount = () => {
+  const [likeCount, setLikeCount] = useState(0);
+
+  useEffect(() => {
+    const db = getFirestore();
+    const docRef = doc(db, 'status', 'HFFGO7hXrPAo7jMjgGHP');
+
+    const unsubscribe = onSnapshot(docRef, (doc) => {
+      if (doc.exists()) {
+        setLikeCount(doc.data().likecount);
+      } else {
+        console.log('No se encontró el documento');
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  const handleButtonClick = async () => {
+    const db = getFirestore();
+    const docRef = doc(db, 'status', 'HFFGO7hXrPAo7jMjgGHP');
+
+    await updateDoc(docRef, {
+      likecount: likeCount + 1,
+    });
+  };
+
+  return (
+    <div>
+      <button id="like-button" onClick={handleButtonClick}>
+        Give love ({likeCount})
+      </button>
+    </div>
+  );
+};
+
+export default LikeCount;
