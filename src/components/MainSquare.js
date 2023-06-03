@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getFirestore, doc, onSnapshot } from 'firebase/firestore';
+import { getFirestore, doc, onSnapshot, updateDoc } from 'firebase/firestore';
 
 const MainSquare = ({ selectedDB }) => {
   const [title, setTitle] = useState("");
@@ -24,12 +24,36 @@ const MainSquare = ({ selectedDB }) => {
     };
   }, [selectedDB]);
 
+  const handleButtonToggle = async (field) => {
+    const db = getFirestore();
+    const docRef = doc(db, "Friends", selectedDB);
+
+    await updateDoc(docRef, {
+      [field]: !eval(field),
+    });
+  };
+
   return (
     <div>
       <h1>{title}</h1>
-      <p>Happy: {happy.toString()}</p>
-      <p>Healthy: {healthy.toString()}</p>
-      <p>Love: {love.toString()}</p>
+      <p>
+        Happy: 
+        <button onClick={() => handleButtonToggle('happy')}>
+          {happy ? 'Yes' : 'No'}
+        </button>
+      </p>
+      <p>
+        Healthy: 
+        <button onClick={() => handleButtonToggle('healthy')}>
+          {healthy ? 'Yes' : 'No'}
+        </button>
+      </p>
+      <p>
+        Love: 
+        <button onClick={() => handleButtonToggle('love')}>
+          {love ? 'Yes' : 'No'}
+        </button>
+      </p>
     </div>
   );
 };
