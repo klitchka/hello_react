@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MainSquare from './components/MainSquare';
 import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB-SRCyw_fzQm6QzOCcka-pyP9qCwKDJl0",
@@ -13,9 +14,21 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const App = () => {
   const [selectedDB, setSelectedDB] = useState("");
+  const [dbNames, setDBNames] = useState([]);
+
+  useEffect(() => {
+    fetchDBNames();
+  }, []);
+
+  const fetchDBNames = async () => {
+    const querySnapshot = await getDocs(collection(db, 'Friends'));
+    const names = querySnapshot.docs.map((doc) => doc.id);
+    setDBNames(names);
+  };
 
   const handleDBChange = (event) => {
     setSelectedDB(event.target.value);
@@ -25,8 +38,11 @@ const App = () => {
     <div className="container">
       <select value={selectedDB} onChange={handleDBChange}>
         <option value="">Hi, friend</option>
-        <option value="Andritte">Andritte</option>
-        <option value="Klitchka">Klitchka</option>
+        {dbNames.map((dbName) => (
+          <option key={dbName} value={dbName}>
+            {dbName}
+          </option>
+        ))}
       </select>
       {selectedDB && <MainSquare selectedDB={selectedDB} />}
     </div>
